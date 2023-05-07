@@ -13,16 +13,6 @@ export interface PokemonData {
     results: Array<PokemonType>,
 }
 
-export const rootLoader = async (): Promise<PokemonData> => {
-    const data = fetch('https://pokeapi.co/api/v2/pokemon');
-
-    if(!(await data).ok) throw new Error("Something Went Wrong");
-
-    const pokemons = (await data).json();
-
-    return pokemons;
-}
-
 export default function Home() {
     const pokemons = useLoaderData() as PokemonData;
 

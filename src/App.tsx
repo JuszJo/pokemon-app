@@ -1,6 +1,8 @@
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
-import Home, { rootLoader } from './components/Home';
-import Pokemon, { pokemonLoader } from './components/Pokemon';
+import Home from './components/Home';
+import { rootLoader } from './loaders/rootLoader';
+import Pokemon from './components/Pokemon';
+import { pokemonLoader } from './loaders/pokemonLoader';
 import './App.css';
 
 const router2 = createBrowserRouter(
