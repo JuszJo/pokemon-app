@@ -24,9 +24,7 @@ export const rootLoader = async (): Promise<PokemonData> => {
 }
 
 export default function Home() {
-
-    const pokemons = useLoaderData() as PokemonData
-
+    const pokemons = useLoaderData() as PokemonData;
 
     return (
         <>
