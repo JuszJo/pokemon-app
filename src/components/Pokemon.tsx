@@ -1,4 +1,4 @@
-import {  useLoaderData, LoaderFunctionArgs }  from 'react-router-dom';
+import {  useLoaderData, LoaderFunctionArgs } from 'react-router-dom';
 import { PokemonType } from './Home';
 
 export const pokemonLoader = async ({params}: LoaderFunctionArgs): Promise<PokemonType> => {
@@ -10,7 +10,6 @@ export const pokemonLoader = async ({params}: LoaderFunctionArgs): Promise<Pokem
 
     return pokemon;
 }
-
 
 export default function Pokemon() {
     const pokemon = useLoaderData() as PokemonType;
