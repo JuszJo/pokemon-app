@@ -8,10 +8,8 @@ const router2 = createBrowserRouter(
         <Route element={<Home />} loader={rootLoader} path='/' >
             <Route element={<Pokemon />} loader={pokemonLoader} path='pokemon/:name'/>
         </Route>
-        
     ]
 ))
-
 
 function App() {
     return <RouterProvider router={router2} />
