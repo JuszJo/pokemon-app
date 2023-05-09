@@ -4,11 +4,10 @@ import { useLoaderData } from 'react-router-dom';
 import { PokemonType } from './types/types';
 
 interface PropsType {
-    pokemon: PokemonType
+    pokemon: PokemonType,
 }
 
-function Stats({pokemon}: PropsType) {
-
+function Stats({ pokemon }: PropsType) {
     return (
         <>
             <div id='grid'>
@@ -32,8 +31,6 @@ function Stats({pokemon}: PropsType) {
 export default function Pokemon() {
     const pokemon = useLoaderData() as PokemonType;
 
-    // console.log(pokemon.stats);
-
     return (
         <>
             <div id='about-pokemon'>
@@ -42,7 +39,7 @@ export default function Pokemon() {
                     <img src={pokemon.sprites.front_default} />
                 </div>
                 <Stats pokemon={pokemon} />
-            </div>        
+            </div>
         </>
     )
 }
