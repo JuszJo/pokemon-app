@@ -3,7 +3,7 @@ import { PokemonData } from "./types/types";
 
 export default function Home() {
     const pokemons = useLoaderData() as PokemonData;
-
+    
     return (
         <>
             <header>

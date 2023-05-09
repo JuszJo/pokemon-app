@@ -13,6 +13,11 @@ export interface PokemonType {
     sprites: {
         front_default: string,
         back_default: string,
+        other: {
+            "official-artwork": {
+                front_default: string
+            }
+        }
     },
     stats: Array<PokemonStats>
 }

@@ -8,7 +8,7 @@ interface PropsType {
     pokemon: PokemonType,
 }
 
-function PokemonImage({pokemon}: PropsType) {
+function PokemonImage({ pokemon }: PropsType) {
     const [loaded, setLoaded] = useState(false);
 
     function showStats() {
