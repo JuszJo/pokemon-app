@@ -3,16 +3,31 @@
     padding: 0;
 }
 
+#about-pokemon {
+    padding-top: 3rem;
+}
+
+#pokemon-name {
+    text-align: center;
+}
+
 #pokemon-image-div {
     text-align: center;
+    margin-top: 2rem;
 }
 
 #grid {
     display: grid;
-    grid-template: repeat(3, 100px) / repeat(2, 200px);
+    grid-template: repeat(3, 100px) / repeat(2, 220px);
     justify-content: center;
+    margin-top: 2rem;
 }
 
 #grid div {
-    
+    padding: 0.5rem;
+}
+
+.stats-div {
+    display: flex;
+    justify-content: space-between;
 }

@@ -11,11 +11,16 @@ function Stats({pokemon}: PropsType) {
 
     return (
         <>
-            <div id="grid">
+            <div id='grid'>
                 {pokemon.stats.map(value => {
                     return (
-                        <div key={value.stat.name}>
-                            <h3>{value.stat.name} {value.base_stat}</h3>
+                        <div key={value.stat.name} className='stats-div'>
+                            <div>
+                                <h3>{value.stat.name}</h3>
+                            </div>
+                            <div>
+                                <h3>{value.base_stat}</h3>
+                            </div>
                         </div>
                     )
                 })}
@@ -31,11 +36,13 @@ export default function Pokemon() {
 
     return (
         <>
-            <h1>{pokemon.name}</h1>
-            <div id="pokemon-image-div">
-                <img src={pokemon.sprites.front_default} />
-            </div>
-            <Stats pokemon={pokemon} />
+            <div id='about-pokemon'>
+                <h1 id='pokemon-name'>{pokemon.name}</h1>
+                <div id='pokemon-image-div'>
+                    <img src={pokemon.sprites.front_default} />
+                </div>
+                <Stats pokemon={pokemon} />
+            </div>        
         </>
     )
 }
