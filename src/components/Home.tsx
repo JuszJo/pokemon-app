@@ -1,17 +1,5 @@
 import { useLoaderData, Link, Outlet } from "react-router-dom";
-
-export interface PokemonType {
-    name: string,
-    url: string,
-    sprites: {
-        front_default: string,
-        back_default: string,
-    },
-}
-
-export interface PokemonData {
-    results: Array<PokemonType>,
-}
+import { PokemonData } from "./types/types";
 
 export default function Home() {
     const pokemons = useLoaderData() as PokemonData;

@@ -1,8 +1,10 @@
 import { useLoaderData } from 'react-router-dom';
-import { PokemonType } from './Home';
+import { PokemonType } from './types/types';
 
 export default function Pokemon() {
     const pokemon = useLoaderData() as PokemonType;
+
+    console.log(pokemon);
 
     return (
         <>
