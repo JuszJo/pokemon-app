@@ -2,9 +2,27 @@ import '../../public/css/pokemon.css';
 
 import { useLoaderData } from 'react-router-dom';
 import { PokemonType } from './types/types';
+import { useState } from 'react';
 
 interface PropsType {
     pokemon: PokemonType,
+}
+
+function PokemonImage({pokemon}: PropsType) {
+    const [loaded, setLoaded] = useState(false);
+
+    function showStats() {
+        setLoaded(true)
+    }
+
+    return (
+        <>
+            <div id='pokemon-image-div'>
+                <img onLoad={showStats} src={pokemon.sprites.front_default} />
+            </div>
+            {loaded && <Stats pokemon={pokemon} />}
+        </>
+    )
 }
 
 function Stats({ pokemon }: PropsType) {
@@ -35,10 +53,7 @@ export default function Pokemon() {
         <>
             <div id='about-pokemon'>
                 <h1 id='pokemon-name'>{pokemon.name}</h1>
-                <div id='pokemon-image-div'>
-                    <img src={pokemon.sprites.front_default} />
-                </div>
-                <Stats pokemon={pokemon} />
+                <PokemonImage key={pokemon.name} pokemon={pokemon} />
             </div>
         </>
     )
