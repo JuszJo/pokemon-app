@@ -1,3 +1,12 @@
+interface PokemonStats {
+    base_stat: number,
+    effort: number,
+    stat: {
+        name: string,
+        url: string
+    }
+}
+
 export interface PokemonType {
     name: string,
     url: string,
@@ -5,6 +14,7 @@ export interface PokemonType {
         front_default: string,
         back_default: string,
     },
+    stats: Array<PokemonStats>
 }
 
 export interface PokemonData {
