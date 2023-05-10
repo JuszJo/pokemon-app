@@ -5,7 +5,7 @@ import { Link, useLoaderData } from "react-router-dom";
 export default function Search() {
     const [searchQuery, setSearchQuery] = useState('');
 
-    let pokemons =  useLoaderData() as PokemonData;
+    let pokemons = useLoaderData() as PokemonData;
 
     return (
         <>
@@ -18,7 +18,7 @@ export default function Search() {
                     {
                         pokemons.results.filter((value, index) => {
                             if(searchQuery.length < 3) {
-                                return index < 4;
+                                return index < 10;
                             }
                             return value.name.includes(searchQuery);
                         })

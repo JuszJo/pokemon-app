@@ -7,7 +7,6 @@ export default function Home() {
             <header>
                 <Search />
             </header>
-            <h1>About</h1>
             <Outlet />
         </>
     )

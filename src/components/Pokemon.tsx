@@ -1,8 +1,10 @@
-import '../../public/css/pokemon.css';
-
 import { useLoaderData } from 'react-router-dom';
 import { PokemonType } from './types/types';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+
+import '../../public/css/pokemon.css';
+
+import preLoader from '../assets/Double Ring-1s-200px.gif';
 
 interface PropsType {
     pokemon: PokemonType,
@@ -10,6 +12,9 @@ interface PropsType {
 
 function PokemonImage({ pokemon }: PropsType) {
     const [loaded, setLoaded] = useState(false);
+    const imageRef = useRef<HTMLImageElement>(null);
+
+    if(loaded) imageRef.current?.classList.add('visible');
 
     function showStats() {
         setLoaded(true)
@@ -17,8 +22,9 @@ function PokemonImage({ pokemon }: PropsType) {
 
     return (
         <>
+            {!loaded && <img src={preLoader} className='preLoader' />}
             <div id='pokemon-image-div'>
-                <img onLoad={showStats} src={pokemon.sprites.front_default} />
+                <img ref={imageRef} className='pokemonImage' onLoad={showStats} src={pokemon.sprites.other['official-artwork'].front_default} />
             </div>
             {loaded && <Stats pokemon={pokemon} />}
         </>
