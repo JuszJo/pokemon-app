@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#search-div {
+    height: 100vh;
+}
+
+#pokemon-list {
+    max-width: 13rem;
+    max-height: 90vh;
+    overflow: scroll;
+}
+
+#pokemon-list::-webkit-scrollbar {
+    display: none;
+}
+
+.search-link-div {
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    background-color: aliceblue;
+}
