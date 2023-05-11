@@ -10,7 +10,7 @@ type PropsType = {
 }
 
 function PokemonList({pokemons, searchQuery}: PropsType) {
-    const [pokemonObject, setPokemonObject] = useState<PokemonType[]>()
+    const [pokemonObject, setPokemonObject] = useState<PokemonType[]>();
 
     useEffect(() => {
         Promise.all(pokemons.results.filter((value, index) => {
@@ -34,7 +34,7 @@ function PokemonList({pokemons, searchQuery}: PropsType) {
                 pokemonObject?.map(pokemon => {
                     return <div key={pokemon.name} className="search-link-div">
                         <img src={pokemon.sprites.front_default} style={{visibility: (!pokemon.sprites.front_default ? 'hidden' : 'visible')}} width="56" height="56"/>
-                        <Link to={`pokemon/${pokemon.name}`} style={{ display: "block" }}>{pokemon.name}</Link>
+                        <Link to={`pokemon/${pokemon.name}`} style={{ display: "block" }}>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</Link>
                     </div>
                 })
             }
