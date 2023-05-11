@@ -10,27 +10,6 @@ interface PropsType {
     pokemon: PokemonType,
 }
 
-function PokemonImage({ pokemon }: PropsType) {
-    const [loaded, setLoaded] = useState(false);
-    const imageRef = useRef<HTMLImageElement>(null);
-
-    if(loaded) imageRef.current?.classList.add('visible');
-
-    function showStats() {
-        setLoaded(true)
-    }
-
-    return (
-        <>
-            {!loaded && <img src={preLoader} className='preLoader' />}
-            <div id='pokemon-image-div'>
-                <img ref={imageRef} className='pokemonImage' onLoad={showStats} src={pokemon.sprites.other['official-artwork'].front_default} />
-            </div>
-            {loaded && <Stats pokemon={pokemon} />}
-        </>
-    )
-}
-
 function Stats({ pokemon }: PropsType) {
     return (
         <>
@@ -48,6 +27,27 @@ function Stats({ pokemon }: PropsType) {
                     )
                 })}
             </div>
+        </>
+    )
+}
+
+function PokemonImage({ pokemon }: PropsType) {
+    const [loaded, setLoaded] = useState(false);
+    const imageRef = useRef<HTMLImageElement>(null);
+
+    if(loaded) imageRef.current?.classList.add('visible');
+
+    function showStats() {
+        setLoaded(true)
+    }
+
+    return (
+        <>
+            {!loaded && <img src={preLoader} className='preLoader' />}
+            <div id='pokemon-image-div'>
+                <img ref={imageRef} className='pokemonImage' onLoad={showStats} src={pokemon.sprites.other['official-artwork'].front_default} />
+            </div>
+            {loaded && <Stats pokemon={pokemon} />}
         </>
     )
 }
