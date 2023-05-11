@@ -17,6 +17,11 @@
 
 #pokemon-image-div {
     text-align: center;
+    width: 100%;
+}
+
+#pokemon-image-div img{
+    width: 50%;
 }
 
 .pokemonImage {
