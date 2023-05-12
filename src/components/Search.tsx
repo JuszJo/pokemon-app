@@ -12,21 +12,21 @@ type PropsType = {
 function PokemonList({pokemons, searchQuery}: PropsType) {
     const [pokemonObject, setPokemonObject] = useState<PokemonType[]>();
 
-    useEffect(() => {
-        Promise.all(pokemons.results.filter((value, index) => {
-            if (searchQuery.length < 3) {
-                return index < 10;
-            }
-            return value.name.includes(searchQuery.toLowerCase());
-        })
-        .map(async pokemon => {
-            const pokemonObject = await (await fetch(`${pokemon.url}`)).json() as PokemonType;
-    
-            return pokemonObject;
-        }))
-        .then(value => setPokemonObject(value))
-    }, [searchQuery])
+    let arrayOfFuffiledPokemonObjects = Promise.all(pokemons.results.filter((value, index) => {
+        if (searchQuery.length < 3) {
+            return index < 10;
+        }
+        return value.name.includes(searchQuery.toLowerCase());
+    })
+    .map(async pokemon => {
+        const pokemonObject = await (await fetch(`${pokemon.url}`)).json() as PokemonType;
 
+        return pokemonObject;
+    }))
+
+    useEffect(() => {
+        arrayOfFuffiledPokemonObjects.then(fuffiledPokemon => setPokemonObject(fuffiledPokemon))
+    }, [searchQuery])
 
     return (
         <>
