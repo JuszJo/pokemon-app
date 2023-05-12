@@ -19,7 +19,17 @@ export interface PokemonType {
             }
         }
     },
+    species: {
+        name: string,
+        url: string
+    }
     stats: Array<PokemonStats>
+}
+
+export interface PokemonSpecies {
+    color: {
+        name: string,
+    }
 }
 
 export interface PokemonData {

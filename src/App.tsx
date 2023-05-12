@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } 
 import Home from './components/Home';
 import { rootLoader } from './loaders/rootLoader';
 import Pokemon from './components/Pokemon';
+// import { finalPokemonLoader } from './loaders/pokemonLoader';
 import { pokemonLoader } from './loaders/pokemonLoader';
 import Error from './error/Error';
 import './App.css';
