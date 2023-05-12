@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import { PokemonData, PokemonType } from "./types/types";
 import { Link, useLoaderData } from "react-router-dom";
 
@@ -47,12 +47,17 @@ export default function Search() {
 
     let pokemons = useLoaderData() as PokemonData;
 
+    function limitFetch(e: ChangeEvent<HTMLInputElement>) {
+        if(e.target.value.length > 2) setSearchQuery(e.target.value)
+        else setSearchQuery('');
+    }
+
     return (
         <>
             <section>
                 <div id="search-div">
                     <div>
-                        <input type="text" onChange={e => setSearchQuery(e.target.value)} placeholder="search for a pokemon" />
+                        <input type="text" onChange={limitFetch} placeholder="search for a pokemon" />
                         <button type="submit">search</button>
                     </div>
                     <div id="pokemon-list">
