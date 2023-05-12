@@ -3,6 +3,7 @@ import { PokemonData, PokemonType } from "./types/types";
 import { Link, useLoaderData } from "react-router-dom";
 
 import '../../public/css/search.css';
+import pokeball from '../assets/Poké_Ball_icon.svg';
 
 type PropsType = {
     pokemons: PokemonData,
@@ -13,9 +14,8 @@ function PokemonList({pokemons, searchQuery}: PropsType) {
     const [pokemonObject, setPokemonObject] = useState<PokemonType[]>();
 
     let arrayOfFuffiledPokemonObjects = Promise.all(pokemons.results.filter((value, index) => {
-        if (searchQuery.length < 3) {
-            return index < 10;
-        }
+        if (searchQuery.length < 3) return index < 10;
+        
         return value.name.includes(searchQuery.toLowerCase());
     })
     .map(async pokemon => {
@@ -56,9 +56,9 @@ export default function Search() {
         <>
             <section>
                 <div id="search-div">
-                    <div>
-                        <input type="text" onChange={limitFetch} placeholder="search for a pokemon" />
-                        <button type="submit">search</button>
+                    <div id="search-div-child1">
+                        <input id="search-input" type="text" onChange={limitFetch} placeholder="Search" />
+                        <img src={pokeball} width={35} />
                     </div>
                     <div id="pokemon-list">
                         <PokemonList pokemons={pokemons} searchQuery={searchQuery} />
