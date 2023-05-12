@@ -56,7 +56,7 @@ function PokemonImage({ pokemon }: PropsType) {
 function PokemonDiv({pokemon, pokemonSpecies}: PropsType) {
     return (
         <>
-            <div id='about-pokemon' style={{backgroundImage: `linear-gradient(to top, black -90%, ${pokemonSpecies?.color.name})`}}>
+            <div id='about-pokemon' style={{backgroundColor: `${pokemonSpecies?.color}`}}>
                 <h1 id='pokemon-name'>{pokemon.name}</h1>
                 <PokemonImage key={pokemon.name} pokemon={pokemon} />
             </div>
