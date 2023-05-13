@@ -63,7 +63,11 @@ function PokemonDiv({pokemon}: PropsType) {
                         <img width={200} src={pokemonLogo} />
                     </div>
                 </section>
-                <h1 id='pokemon-name'>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
+                <section>
+                    <div>
+                        <h1 id='pokemon-name' className={`type-color-${pokemon.types[0].type.name}`}>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
+                    </div>
+                </section>
                 <section id='main-pokemon'>
                     <div id='main-pokemon-flex'>
                         <div className='main-pokemon-flex-child'>
@@ -72,6 +76,17 @@ function PokemonDiv({pokemon}: PropsType) {
                         <div className='main-pokemon-flex-child'>
                             <Stats pokemon={pokemon} />
                         </div>
+                    </div>
+                </section>
+                <section>
+                    <div id='types-div'>
+                        {pokemon.types.map(pokemonTypes => {
+                            return (
+                                <span key={pokemonTypes.type.name} className={`type-${pokemonTypes.type.name}`}>
+                                    {pokemonTypes.type.name.charAt(0).toUpperCase() + pokemonTypes.type.name.slice(1)}
+                                </span>
+                            )
+                        })}
                     </div>
                 </section>
             </div>

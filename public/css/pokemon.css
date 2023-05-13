@@ -82,6 +82,22 @@
     scale: 2;
 }
 
+#types-div {
+    margin: 2rem 1rem;
+    text-align: center;
+}
+
+#types-div span {
+    color: white;
+    padding: 0.25rem 1rem;
+    border-radius: 0.25rem;
+    font-size: 1.2rem;
+}
+
+#types-div span:nth-child(1){
+    margin-right: 1rem;
+}
+
 .type-normal {
     background-color: #aa9
 }
@@ -158,6 +174,82 @@
     background-color: #698
 }
 
+.type-color-normal {
+    color: #aa9
+}
+
+.type-color-fire {
+    color: #f42
+}
+
+.type-color-water {
+    color: #39f
+}
+
+.type-color-electric {
+    color: #fc3
+}
+
+.type-color-grass {
+    color: #7c5
+}
+
+.type-color-ice {
+    color: #6cf
+}
+
+.type-color-fighting {
+    color: #b54
+}
+
+.type-color-poison {
+    color: #a59
+}
+
+.type-color-ground {
+    color: #db5
+}
+
+.type-color-flying {
+    color: #89f
+}
+
+.type-color-psychic {
+    color: #f59
+}
+
+.type-color-bug {
+    color: #ab2
+}
+
+.type-color-rock {
+    color: #ba6
+}
+
+.type-color-ghost {
+    color: #66b
+}
+
+.type-color-dragon {
+    color: #76e
+}
+
+.type-color-dark {
+    color: #754
+}
+
+.type-color-steel {
+    color: #aab
+}
+
+.type-color-fairy {
+    color: #e9e
+}
+
+.type-color-curse {
+    color: #698
+}
+
 @media (max-width: 1090px) {
     .main-pokemon-flex-child {
         flex-basis: unset;
@@ -178,6 +270,6 @@
     }
 }
 
-@media (max-width: 700px) {
+/* @media (max-width: 700px) {
     
-}
+} */
