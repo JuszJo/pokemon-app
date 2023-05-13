@@ -13,6 +13,18 @@
     /* color: #f1f1f1; */
 }
 
+#main-pokemon-flex {
+    display: flex;
+    margin: 2rem 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.main-pokemon-flex-child {
+    flex-basis: 50%;
+    align-self: center;
+}
+
 #pokemon-name {
     text-align: center;
     font-size: 3rem;
@@ -144,4 +156,28 @@
 
 .type-curse {
     background-color: #698
+}
+
+@media (max-width: 1090px) {
+    .main-pokemon-flex-child {
+        flex-basis: unset;
+    }
+
+    #grid {
+        grid-template: repeat(3, 50px) / repeat(2, 200px);
+        gap: 1rem;
+    }
+
+    #grid div {
+        text-align: left;
+    }
+
+
+    #pokemon-image-div img {
+        width: 80%;
+    }
+}
+
+@media (max-width: 700px) {
+    
 }

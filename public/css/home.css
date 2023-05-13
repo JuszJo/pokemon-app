@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    flex-shrink: 0;
+}
+
+/* @media (max-width: 700px) {
+    header {
+        
+    }
+} */

@@ -55,7 +55,6 @@ function PokemonImage({ pokemon }: PropsType) {
 }
 
 function PokemonDiv({pokemon}: PropsType) {
-
     return (
         <>
             <div id='about-pokemon'>
@@ -66,11 +65,11 @@ function PokemonDiv({pokemon}: PropsType) {
                 </section>
                 <h1 id='pokemon-name'>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
                 <section id='main-pokemon'>
-                    <div style={{display: 'flex', margin: '2rem 1rem'}}>
-                        <div style={{flexBasis: '50%'}}>
+                    <div id='main-pokemon-flex'>
+                        <div className='main-pokemon-flex-child'>
                             <PokemonImage key={pokemon.name} pokemon={pokemon} />
                         </div>
-                        <div style={{flexBasis: '50%', alignSelf: 'center'}}>
+                        <div className='main-pokemon-flex-child'>
                             <Stats pokemon={pokemon} />
                         </div>
                     </div>
@@ -83,9 +82,6 @@ function PokemonDiv({pokemon}: PropsType) {
 export default function Pokemon() {
     // const [pokemon, pokemonSpecies] = useLoaderData() as [PokemonType, PokemonSpecies];
     const pokemon = useLoaderData() as PokemonType;
-
-    console.log(pokemon);
-    
-        
+            
     return <PokemonDiv pokemon={pokemon} />
 }
