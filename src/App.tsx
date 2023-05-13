@@ -19,4 +19,4 @@ function App() {
     return <RouterProvider router={router2} />
 }
 
-export default App
+export default App;
