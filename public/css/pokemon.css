@@ -15,6 +15,9 @@
 
 #pokemon-name {
     text-align: center;
+    font-size: 3rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
 }
 
 #pokemon-image-div {
@@ -46,6 +49,14 @@
     flex-basis: 70%;
 }
 
+#stats-name h3 {
+    font-weight: 400;
+}
+
+#stats-value h3 {
+    font-weight: 500;
+}
+
 .visible {
     visibility: visible;
 }
@@ -57,4 +68,80 @@
     left: 50%;
     translate: -50% -50%;
     scale: 2;
+}
+
+.type-normal {
+    background-color: #aa9
+}
+
+.type-fire {
+    background-color: #f42
+}
+
+.type-water {
+    background-color: #39f
+}
+
+.type-electric {
+    background-color: #fc3
+}
+
+.type-grass {
+    background-color: #7c5
+}
+
+.type-ice {
+    background-color: #6cf
+}
+
+.type-fighting {
+    background-color: #b54
+}
+
+.type-poison {
+    background-color: #a59
+}
+
+.type-ground {
+    background-color: #db5
+}
+
+.type-flying {
+    background-color: #89f
+}
+
+.type-psychic {
+    background-color: #f59
+}
+
+.type-bug {
+    background-color: #ab2
+}
+
+.type-rock {
+    background-color: #ba6
+}
+
+.type-ghost {
+    background-color: #66b
+}
+
+.type-dragon {
+    background-color: #76e
+}
+
+.type-dark {
+    background-color: #754
+}
+
+.type-steel {
+    background-color: #aab
+}
+
+.type-fairy {
+    background-color: #e9e
+}
+
+.type-curse {
+    background-color: #698
 }

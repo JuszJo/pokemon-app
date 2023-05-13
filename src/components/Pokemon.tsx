@@ -20,7 +20,7 @@ function Stats({ pokemon }: PropsType) {
                     return (
                         <div key={value.stat.name} className='stats-div'>
                             <div id='stats-name'>
-                                <h3>{value.stat.name}</h3>
+                                <h3>{value.stat.name.charAt(0).toUpperCase() + value.stat.name.slice(1)}</h3>
                             </div>
                             <div id='stats-value'>
                                 <h3>{value.base_stat}</h3>
@@ -54,22 +54,23 @@ function PokemonImage({ pokemon }: PropsType) {
     )
 }
 
-function PokemonDiv({pokemon, pokemonSpecies}: PropsType) {
+function PokemonDiv({pokemon}: PropsType) {
+
     return (
         <>
-            <div id='about-pokemon' style={{backgroundColor: `${pokemonSpecies?.color}`}}>
+            <div id='about-pokemon'>
                 <section>
                     <div style={{textAlign: 'center'}}>
                         <img width={200} src={pokemonLogo} />
                     </div>
                 </section>
+                <h1 id='pokemon-name'>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
                 <section id='main-pokemon'>
-                    <div style={{display: 'flex', margin: '0 1rem'}}>
+                    <div style={{display: 'flex', margin: '2rem 1rem'}}>
                         <div style={{flexBasis: '50%'}}>
                             <PokemonImage key={pokemon.name} pokemon={pokemon} />
                         </div>
-                        <div style={{flexBasis: '50%'}}>
-                            <h1 id='pokemon-name'>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
+                        <div style={{flexBasis: '50%', alignSelf: 'center'}}>
                             <Stats pokemon={pokemon} />
                         </div>
                     </div>
@@ -80,7 +81,11 @@ function PokemonDiv({pokemon, pokemonSpecies}: PropsType) {
 }
 
 export default function Pokemon() {
-    const [pokemon, pokemonSpecies] = useLoaderData() as [PokemonType, PokemonSpecies];
+    // const [pokemon, pokemonSpecies] = useLoaderData() as [PokemonType, PokemonSpecies];
+    const pokemon = useLoaderData() as PokemonType;
+
+    console.log(pokemon);
+    
         
-    return <PokemonDiv pokemon={pokemon} pokemonSpecies={pokemonSpecies} />
+    return <PokemonDiv pokemon={pokemon} />
 }

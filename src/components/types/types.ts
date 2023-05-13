@@ -7,6 +7,13 @@ interface PokemonStats {
     }
 }
 
+interface Type {
+    type: {
+        name: string,
+        url: string
+    }
+}
+
 export interface PokemonType {
     name: string,
     url: string,
@@ -23,7 +30,9 @@ export interface PokemonType {
         name: string,
         url: string
     }
-    stats: Array<PokemonStats>
+    stats: Array<PokemonStats>,
+    types: Array<Type>
+    
 }
 
 export interface PokemonSpecies {
