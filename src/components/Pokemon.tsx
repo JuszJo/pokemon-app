@@ -5,7 +5,7 @@ import { useRef, useState } from 'react';
 import '../../public/css/pokemon.css';
 
 import pokemonLogo from '../assets/International_Pokémon_logo.svg';
-import preLoader from '../assets/Double Ring-1s-200px.gif';
+// import preLoader from '../assets/Double Ring-1s-200px.gif';
 
 interface PropsType {
     pokemon: PokemonType,
