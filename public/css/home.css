@@ -7,6 +7,20 @@ header {
     flex-shrink: 0;
 }
 
+#pokemon-logo-section {
+    flex-grow: 1;
+    text-align: center;
+}
+
+#pokemon-logo-section div {
+    position: relative;
+    top: 10%;
+}
+
+#pokemon-logo-section img {
+    width: 50%;
+}
+
 /* @media (max-width: 700px) {
     header {
         

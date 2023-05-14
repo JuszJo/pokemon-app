@@ -5,11 +5,12 @@ import { useRef, useState } from 'react';
 import '../../public/css/pokemon.css';
 
 import pokemonLogo from '../assets/International_Pokémon_logo.svg';
-// import preLoader from '../assets/Double Ring-1s-200px.gif';
+import preLoader from '../assets/Poké_Ball_icon.svg';
 
 interface PropsType {
     pokemon: PokemonType,
-    pokemonSpecies?: PokemonSpecies
+    pokemonSpecies?: PokemonSpecies,
+    setLoaded?: any
 }
 
 function Stats({ pokemon }: PropsType) {
@@ -36,28 +37,27 @@ function Stats({ pokemon }: PropsType) {
     )
 }
 
-function PokemonImage({ pokemon }: PropsType) {
-    const [loaded, setLoaded] = useState(false);
+function PokemonImage({ pokemon, setLoaded }: PropsType) {
     const imageRef = useRef<HTMLImageElement>(null);
 
-    if(loaded) imageRef.current?.classList.add('visible');
-
     function showStats() {
-        setLoaded(true)
+        setLoaded(true);
+
+        imageRef.current?.classList.add('visible');
     }
 
     return (
         <>
-            {/* {!loaded && <img src={preLoader} className='preLoader' />} */}
             <div id='pokemon-image-div'>
                 <img ref={imageRef} width={400} className='pokemonImage' onLoad={showStats} src={pokemon.sprites.other['official-artwork'].front_default} />
             </div>
-            {/* {loaded && <Stats pokemon={pokemon} />} */}
         </>
     )
 }
 
 function PokemonDiv({pokemon}: PropsType) {
+    const [loaded, setLoaded] = useState(false);
+    
     return (
         <>
             <div id='about-pokemon'>
@@ -68,16 +68,17 @@ function PokemonDiv({pokemon}: PropsType) {
                 </section>
                 <section>
                     <div>
-                        <h1 id='pokemon-name' className={`type-color-${pokemon.types[0].type.name}`}>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
+                        {loaded && <h1 id='pokemon-name' className={`type-color-${pokemon.types[0].type.name}`}>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>}
                     </div>
                 </section>
                 <section id='main-pokemon'>
                     <div id='main-pokemon-flex'>
                         <div className='main-pokemon-flex-child'>
-                            <PokemonImage key={pokemon.name} pokemon={pokemon} />
+                            {!loaded && <img src={preLoader} className='preLoader' />}
+                            <PokemonImage pokemon={pokemon} setLoaded={setLoaded} />
                         </div>
                         <div className='main-pokemon-flex-child'>
-                            <Stats pokemon={pokemon} />
+                            {loaded && <Stats pokemon={pokemon} />}
                         </div>
                     </div>
                 </section>
@@ -101,5 +102,5 @@ export default function Pokemon() {
     // const [pokemon, pokemonSpecies] = useLoaderData() as [PokemonType, PokemonSpecies];
     const pokemon = useLoaderData() as PokemonType;
             
-    return <PokemonDiv pokemon={pokemon} />
+    return <PokemonDiv key={pokemon.name} pokemon={pokemon} />
 }

@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 import Home from './components/Home';
 import { rootLoader } from './loaders/rootLoader';
+import { WelcomePage } from './components/Home';
 import Pokemon from './components/Pokemon';
 // import { finalPokemonLoader } from './loaders/pokemonLoader';
 import { pokemonLoader } from './loaders/pokemonLoader';
@@ -9,8 +10,9 @@ import './App.css';
 
 const router2 = createBrowserRouter(
     createRoutesFromElements([
-        <Route element={<Home />} loader={rootLoader} path='/' errorElement={<Error />} >
-            <Route element={<Pokemon />} loader={pokemonLoader} path='pokemon/:name'/>
+        <Route element={<Home />} loader={rootLoader} path='/' errorElement={<Error />}>
+            <Route element={<WelcomePage />} index />
+            <Route element={<Pokemon />} loader={pokemonLoader} path='pokemon/:name' />
         </Route>
     ]
 ))
