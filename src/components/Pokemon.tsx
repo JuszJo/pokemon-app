@@ -19,11 +19,14 @@ function Stats({ pokemon }: PropsType) {
                 {pokemon.stats.map(value => {
                     return (
                         <div key={value.stat.name} className='stats-div'>
-                            <div id='stats-name'>
+                            <div className='stats-name'>
                                 <h3>{value.stat.name.charAt(0).toUpperCase() + value.stat.name.slice(1)}</h3>
                             </div>
-                            <div id='stats-value'>
+                            <div className='stats-value'>
                                 <h3>{value.base_stat}</h3>
+                            </div>
+                            <div className='stats-bar'>
+                                <div className={`type-${pokemon.types[0].type.name}`} style={{width: `${(value.base_stat / 200) * 100}%`}}></div>
                             </div>
                         </div>
                     )
