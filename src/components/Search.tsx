@@ -7,10 +7,11 @@ import pokeball from '../assets/Poké_Ball_icon.svg';
 
 type PropsType = {
     pokemons: PokemonData,
-    searchQuery: string
+    searchQuery: string,
+    signal?: AbortSignal
 }
 
-function PokemonList({pokemons, searchQuery}: PropsType) {
+function PokemonList({pokemons, searchQuery, signal}: PropsType) {
     const [pokemonObject, setPokemonObject] = useState<PokemonType[]>();
 
     let arrayOfFuffiledPokemonObjects = Promise.all(pokemons.results.filter((value, index) => {
@@ -19,7 +20,7 @@ function PokemonList({pokemons, searchQuery}: PropsType) {
         return value.name.includes(searchQuery.toLowerCase());
     })
     .map(async pokemon => {
-        const pokemonObject = await (await fetch(`${pokemon.url}`)).json() as PokemonType;
+        const pokemonObject = await (await fetch(`${pokemon.url}`, {signal})).json() as PokemonType;
 
         return pokemonObject;
     }))
@@ -47,8 +48,15 @@ export default function Search() {
 
     let pokemons = useLoaderData() as PokemonData;
 
+    const controller = new AbortController();
+    const signal = controller.signal;
+    
     function limitFetch(e: ChangeEvent<HTMLInputElement>) {
-        if(e.target.value.length > 2) setSearchQuery(e.target.value)
+        if(e.target.value.length > 2) {
+            controller.abort();
+
+            setSearchQuery(e.target.value)
+        }
         else setSearchQuery('');
     }
 
@@ -61,7 +69,7 @@ export default function Search() {
                         <img src={pokeball} width={35} />
                     </div>
                     <div id="pokemon-list">
-                        <PokemonList pokemons={pokemons} searchQuery={searchQuery} />
+                        <PokemonList pokemons={pokemons} searchQuery={searchQuery} signal={signal} />
                     </div>
                 </div>
             </section>
