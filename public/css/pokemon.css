@@ -20,7 +20,7 @@
 
 #main-pokemon-flex {
     display: flex;
-    margin: 1rem 1rem;
+    margin: 1rem 2rem;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -66,10 +66,6 @@
     padding: 2rem 0;
     margin-top: 1rem;
 }
-
-/* #pokemon-image-div img {
-    
-} */
 
 .pokemonImage {
     visibility: hidden;
@@ -328,5 +324,31 @@
 
     #pokemon-image-div img {
         width: 80%;
+    }
+}
+
+
+@media (max-width: 600px) {
+    #grid {
+        grid-template: repeat(6, 50px) / repeat(1, 1fr);
+        gap: 1rem;
+    }
+
+    .main-pokemon-flex-child:nth-child(2) {
+        flex-grow: 1;
+    }
+
+    #types-div span:nth-child(1) {
+        margin-right: 0.5rem;
+    }
+}
+
+@media (max-width: 500px) {
+    #types-div span:nth-child(1) {
+        margin-right: 0.25rem;
+    }
+
+    .stats-name {
+        flex-basis: 20%;
     }
 }

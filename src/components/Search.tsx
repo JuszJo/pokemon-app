@@ -80,7 +80,7 @@ export default function Search() {
                     </div>
                 </section>
                 :
-                <img id="pokelogo" style={{position: "absolute", left: "30px", top: "30px", zIndex: "1"}} src={pokeball} onClick={toggleSidebar} width={35} />
+                <img id="pokelogo" style={{position: "absolute", left: "20px", top: "30px", zIndex: "1"}} src={pokeball} onClick={toggleSidebar} width={35} />
             }
         </>
     )
