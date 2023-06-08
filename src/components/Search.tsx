@@ -45,6 +45,7 @@ function PokemonList({pokemons, searchQuery, signal}: PropsType) {
 
 export default function Search() {
     const [searchQuery, setSearchQuery] = useState('');
+    const [isShowingSidebar, setIsShowingSidebar] = useState((window.innerWidth > 800 ? true : false));
 
     let pokemons = useLoaderData() as PokemonData;
 
@@ -60,19 +61,27 @@ export default function Search() {
         else setSearchQuery('');
     }
 
+    function toggleSidebar() {
+        setIsShowingSidebar(!isShowingSidebar);
+    }
+
     return (
         <>
-            <section>
-                <div id="search-div">
-                    <div id="search-div-child1">
-                        <input id="search-input" type="text" onChange={limitFetch} placeholder="Search" />
-                        <img src={pokeball} width={35} />
+            {isShowingSidebar ? 
+                <section>
+                    <div id="search-div">
+                        <div id="search-div-child1">
+                            <input id="search-input" type="text" onChange={limitFetch} placeholder="Search" />
+                            <img id="pokelogo" src={pokeball} onClick={toggleSidebar} width={35} />
+                        </div>
+                        <div id="pokemon-list">
+                            <PokemonList pokemons={pokemons} searchQuery={searchQuery} signal={signal} />
+                        </div>
                     </div>
-                    <div id="pokemon-list">
-                        <PokemonList pokemons={pokemons} searchQuery={searchQuery} signal={signal} />
-                    </div>
-                </div>
-            </section>
+                </section>
+                :
+                <img id="pokelogo" style={{position: "absolute", left: "30px", top: "30px", zIndex: "1"}} src={pokeball} onClick={toggleSidebar} width={35} />
+            }
         </>
     )
 }
