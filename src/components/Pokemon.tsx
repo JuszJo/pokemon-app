@@ -1,6 +1,7 @@
 import { useLoaderData } from 'react-router-dom';
 import { PokemonSpecies, PokemonType } from './types/types';
 import { useRef, useState } from 'react';
+import upperCaseFirstChar from '../utils/upperCase';
 
 import '../../public/css/pokemon.css';
 
@@ -23,7 +24,7 @@ function Stats({ pokemon }: PropsType) {
                     return (
                         <div key={value.stat.name} className='stats-div'>
                             <div className='stats-name'>
-                                <h3>{value.stat.name.charAt(0).toUpperCase() + value.stat.name.slice(1)}</h3>
+                                <h3>{upperCaseFirstChar(value.stat.name)}</h3>
                             </div>
                             <div className='stats-value'>
                                 <h3>{value.base_stat}</h3>
@@ -77,13 +78,13 @@ function PokemonDiv({pokemon}: PropsType) {
                         <div className='main-pokemon-flex-child'>
                             <div id='pokemon-top-div'>
                                 <div>
-                                    <h1 id='pokemon-name' className={`type-color-${pokemon.types[0].type.name}`}>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
+                                    <h1 id='pokemon-name' className={`type-color-${pokemon.types[0].type.name}`}>{upperCaseFirstChar(pokemon.name)}</h1>
                                 </div>
                                 <div id='types-div'>
                                     {pokemon.types.map(pokemonTypes => {
                                         return (
                                             <span key={pokemonTypes.type.name} className={`type-${pokemonTypes.type.name}`}>
-                                                {pokemonTypes.type.name.charAt(0).toUpperCase() + pokemonTypes.type.name.slice(1)}
+                                                {upperCaseFirstChar(pokemonTypes.type.name)}
                                             </span>
                                         )
                                     })}
