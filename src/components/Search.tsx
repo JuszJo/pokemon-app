@@ -31,7 +31,6 @@ function PokemonList({pokemons, searchQuery}: PropsType) {
 
     useEffect(() => {
         arrayOfFuffiledPokemonObjects.then(fuffiledPokemon => {
-            console.log(fuffiledPokemon);
             setPokemonArray(fuffiledPokemon)
         })
     }, [searchQuery])
