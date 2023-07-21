@@ -1,4 +1,4 @@
-import { useState, useEffect, ChangeEvent,} from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import { PokemonData, PokemonType } from "./types/types";
 import { Link, useLoaderData } from "react-router-dom";
 import upperCaseFirstChar from "../utils/upperCase";
@@ -55,7 +55,10 @@ function SearchDiv({pokemons}: SearchDivProps) {
     const [isShowingSidebar, setIsShowingSidebar] = useState((window.innerWidth > 800 ? true : false));
 
     function initLiveSearch(e: ChangeEvent<HTMLInputElement>) {
-        setDebouncedQuery(e.target.value)
+        if(e.target.value.length > 2) {
+            setDebouncedQuery(e.target.value)
+        }
+        else setDebouncedQuery('')
     }
 
     useEffect(() => {

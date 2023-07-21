@@ -3,7 +3,6 @@ import Home from './components/Home';
 import { rootLoader } from './loaders/rootLoader';
 import { WelcomePage } from './components/Home';
 import Pokemon from './components/Pokemon';
-// import { finalPokemonLoader } from './loaders/pokemonLoader';
 import { pokemonLoader } from './loaders/pokemonLoader';
 import Error from './error/Error';
 import './App.css';
