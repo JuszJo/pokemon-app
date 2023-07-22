@@ -57,3 +57,17 @@
     gap: 0.5rem;
     flex-shrink: 0;
 }
+
+.rotate {
+    animation: rotate 0.5s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        rotate: 0deg;
+    }
+
+    100% {
+        rotate: 360deg;
+    }
+}

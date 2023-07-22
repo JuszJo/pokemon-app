@@ -1,4 +1,4 @@
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect, ChangeEvent, useRef } from "react";
 import { PokemonData, PokemonType } from "./types/types";
 import { Link, useLoaderData } from "react-router-dom";
 import upperCaseFirstChar from "../utils/upperCase";
@@ -53,13 +53,22 @@ function SearchDiv({pokemons}: SearchDivProps) {
     const [searchQuery, setSearchQuery] = useState('');
     const [debouncedQuery, setDebouncedQuery] = useState(searchQuery);
     const [isShowingSidebar, setIsShowingSidebar] = useState((window.innerWidth > 800 ? true : false));
+    const imageRef = useRef<HTMLImageElement>(null);
 
     function initLiveSearch(e: ChangeEvent<HTMLInputElement>) {
         setDebouncedQuery(e.target.value)
+
+        if(!imageRef.current?.classList.contains('rotate')) {
+            imageRef.current?.classList.add('rotate')
+        }
     }
 
     useEffect(() => {
-        const timer = setTimeout(() => setSearchQuery(debouncedQuery), 1000)
+        const timer = setTimeout(() => {
+            setSearchQuery(debouncedQuery)
+            
+            imageRef.current?.classList.remove('rotate')
+        }, 1000)
 
         return () => clearTimeout(timer)
     }, [debouncedQuery])
@@ -75,7 +84,7 @@ function SearchDiv({pokemons}: SearchDivProps) {
                     <div id="search-div">
                         <div id="search-div-child1">
                             <input id="search-input" type="text" onChange={initLiveSearch} placeholder="Search" />
-                            <img id="pokelogo" src={pokeball} onClick={toggleSidebar} width={35} />
+                            <img id="pokelogo" ref={imageRef} src={pokeball} onClick={toggleSidebar} width={35} />
                         </div>
                         <div id="pokemon-list">
                             <PokemonList pokemons={pokemons} searchQuery={searchQuery} />
