@@ -113,9 +113,15 @@ export default function Pokemon() {
     // const [pokemon, pokemonSpecies] = useLoaderData() as [PokemonType, PokemonSpecies];
     const pokemon = useLoaderData() as PokemonType;
     const { state } = useNavigation();
-
-    console.log(state);
-    
             
-    return <PokemonDiv key={pokemon.name} pokemon={pokemon} />
+    return (
+        <>
+            {state == "loading" ?
+                <div style={{width: "100%", textAlign: "center", marginTop: "2rem"}}>
+                    <img id='sine' src={pokemonLogo} />
+                </div>
+                :
+                <PokemonDiv key={pokemon.name} pokemon={pokemon} />}
+        </>
+    )
 }
