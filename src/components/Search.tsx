@@ -19,17 +19,17 @@ type PropsType = {
 function PokemonList({pokemons, searchQuery}: PropsType) {
     const [pokemonArray, setPokemonArray] = useState<PokemonType[]>();
     
-    let arrayOfFuffiledPokemonObjects = Promise.all(pokemons.results.filter((value, index) => {
-        if (searchQuery.length < 3) return index < 20;
-        else return value.name.includes(searchQuery.toLowerCase())
-    })
-    .map(async pokemon => {
-        const pokemonObject = await (await fetch(`${pokemon.url}`)).json() as PokemonType;
-
-        return pokemonObject
-    }))
-
     useEffect(() => {
+        let arrayOfFuffiledPokemonObjects = Promise.all(pokemons.results.filter((value, index) => {
+            if (searchQuery.length < 3) return index < 20;
+            else return value.name.includes(searchQuery.toLowerCase())
+        })
+        .map(async pokemon => {
+            const pokemonObject = await (await fetch(`${pokemon.url}`)).json() as PokemonType;
+    
+            return pokemonObject
+        }))
+
         arrayOfFuffiledPokemonObjects.then(fuffiledPokemon => {
             setPokemonArray(fuffiledPokemon)
         })
@@ -55,10 +55,7 @@ function SearchDiv({pokemons}: SearchDivProps) {
     const [isShowingSidebar, setIsShowingSidebar] = useState((window.innerWidth > 800 ? true : false));
 
     function initLiveSearch(e: ChangeEvent<HTMLInputElement>) {
-        if(e.target.value.length > 2) {
-            setDebouncedQuery(e.target.value)
-        }
-        else setDebouncedQuery('')
+        setDebouncedQuery(e.target.value)
     }
 
     useEffect(() => {

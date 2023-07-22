@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigation } from 'react-router-dom';
 import { PokemonSpecies, PokemonType } from './types/types';
 import { useRef, useState } from 'react';
 import upperCaseFirstChar from '../utils/upperCase';
@@ -112,6 +112,10 @@ function PokemonDiv({pokemon}: PropsType) {
 export default function Pokemon() {
     // const [pokemon, pokemonSpecies] = useLoaderData() as [PokemonType, PokemonSpecies];
     const pokemon = useLoaderData() as PokemonType;
+    const { state } = useNavigation();
+
+    console.log(state);
+    
             
     return <PokemonDiv key={pokemon.name} pokemon={pokemon} />
 }
