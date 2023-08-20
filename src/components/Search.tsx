@@ -13,10 +13,11 @@ type SearchDivProps = {
 type PropsType = {
     pokemons: PokemonData,
     searchQuery: string,
-    signal?: AbortSignal
+    imageRef: React.RefObject<HTMLImageElement>
+    signal?: AbortSignal,
 }
 
-function PokemonList({pokemons, searchQuery}: PropsType) {
+function PokemonList({pokemons, searchQuery, imageRef}: PropsType) {
     const [pokemonArray, setPokemonArray] = useState<PokemonType[]>();
     
     useEffect(() => {
@@ -31,6 +32,8 @@ function PokemonList({pokemons, searchQuery}: PropsType) {
         }))
 
         arrayOfFuffiledPokemonObjects.then(fuffiledPokemon => {
+            imageRef.current?.classList.remove('rotate')
+
             setPokemonArray(fuffiledPokemon)
         })
     }, [searchQuery])
@@ -66,8 +69,6 @@ function SearchDiv({pokemons}: SearchDivProps) {
     useEffect(() => {
         const timer = setTimeout(() => {
             setSearchQuery(debouncedQuery)
-            
-            imageRef.current?.classList.remove('rotate')
         }, 1000)
 
         return () => clearTimeout(timer)
@@ -87,7 +88,7 @@ function SearchDiv({pokemons}: SearchDivProps) {
                             <img id="pokelogo" ref={imageRef} src={pokeball} onClick={toggleSidebar} width={35} />
                         </div>
                         <div id="pokemon-list">
-                            <PokemonList pokemons={pokemons} searchQuery={searchQuery} />
+                            <PokemonList pokemons={pokemons} searchQuery={searchQuery} imageRef={imageRef} />
                         </div>
                     </div>
                 </section>

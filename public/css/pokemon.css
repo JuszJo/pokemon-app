@@ -142,8 +142,11 @@
     top: 50%;
     left: 50%;
     translate: -50% -50%;
+    transform: translate(-50% -50%);
+    -webkit-transform: translate(-50% -50%);
     width: 600px;
     animation: rotate 1s linear infinite;
+    -webkit-animation: rotate 1s linear infinite;
 }
 
 #sine {
@@ -152,29 +155,41 @@
     animation-duration: 0.5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
+    animation: sine 0.5s linear infinite;
+    -webkit-animation: sine 0.5s linear infinite;
 }
 
 @keyframes sine {
     0% {
-        scale: 1
+        scale: 1;
+        transform: scale(1);
+        -webkit-transform: scale(1);
     }
 
     50% {
-        scale: 1.2
+        scale: 1.2;
+        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
     }
 
     100% {
-        scale: 1
+        scale: 1;
+        transform: scale(1);
+        -webkit-transform: scale(1);
     }
 }
 
 @keyframes rotate {
     0% {
         rotate: 0deg;
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
     }
-
+    
     100% {
         rotate: 360deg;
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
     }
 }
 
