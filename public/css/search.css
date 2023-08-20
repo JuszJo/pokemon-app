@@ -76,3 +76,9 @@
         -webkit-transform: rotate(360deg);
     }
 }
+
+@media screen and (max-width: 600px) {
+    #search-div {
+        max-width: 12rem;
+    }
+}
